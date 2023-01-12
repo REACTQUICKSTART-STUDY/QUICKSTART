@@ -1,3 +1,6 @@
+/*
+  이름 가지고 장난, 사칙연산, 간단한 버킷리스트, 버튼들, footer로 만들어짐 
+*/
 import React, { useState } from "react";
 import BucketList from "./components/BucketList";
 import {
@@ -29,7 +32,7 @@ const App = (props: Props) => {
   const nameLetters: string[] = ["J", "a", "e", "h", "e", "o", "n"];
   const [idxHistory, setIdxHistory] = useState<number[]>([]);
 
-  const [operands, setOperands] = useState<Operands>({ x: 100, y: 300 });
+  const [operands, setOperands] = useState<Operands>({ x: 100, y: 301 });
   const [operator, setOperator] = useState<string>("+");
 
   const [theme, setTheme] = useState<string>("basic");
@@ -38,7 +41,6 @@ const App = (props: Props) => {
     { id: 1, task: "스카이다이빙", done: false },
     { id: 2, task: "월드컵 결승 직관", done: false },
     { id: 3, task: "유럽여행", done: true },
-    { id: 4, task: "100억 모으기", done: false },
   ]);
 
   const handleName = () => {
@@ -61,7 +63,8 @@ const App = (props: Props) => {
 
   const handleOperand = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    setOperands({ ...operands, [name]: Number(value) });
+    if (name === "x") setOperands({ ...operands, x: Number(value) });
+    else setOperands({ ...operands, y: Number(value) });
   };
 
   const handleOperator = (e: React.ChangeEvent<HTMLInputElement>) => {

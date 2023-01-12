@@ -1,3 +1,4 @@
+// 간단한 버킷리스트
 import React, { useRef, useState } from "react";
 import { Bucket } from "../App";
 import BucketItem from "./BucketItem";

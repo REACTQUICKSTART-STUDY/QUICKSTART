@@ -1,3 +1,4 @@
+// styled-component를 이용하여 만든 버튼 모음
 import styled from "styled-components";
 
 const BasicButton = styled.button`
