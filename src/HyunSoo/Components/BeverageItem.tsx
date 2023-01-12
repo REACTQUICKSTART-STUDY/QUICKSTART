@@ -7,7 +7,7 @@ type BeverageItemPropsType = {
 
 const BeverageItem = (props: BeverageItemPropsType) => {
   let item = props.beverageitem
-  console.log(item)
+  // console.log(item)
   return (
     <label className={item.visited ? "list-group-item active" : "list-group-item"}>
       <input className='form-check-input' type='checkbox' />

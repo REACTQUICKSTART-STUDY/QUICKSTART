@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import BeverageList from './Components/BeverageList'
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css"
+import Footer from './Components/Footer'
 
 export type BeverageType = {
   no: number
@@ -10,6 +11,7 @@ export type BeverageType = {
 }
 
 const App = () => {
+  const [theme, setTheme] = useState()
   const [msg, setMsg] = useState<string>('음료 종류')
   const [list, setList] = useState<Array<BeverageType>>([
     { no: 1, beverage: '커피', visited: false, message: '커혈 필수' },
@@ -32,6 +34,7 @@ const App = () => {
       <hr className="dash-style" />
       {addResult(4, 3)}
       <BeverageList beverages={list} />
+      <Footer theme={theme} />
     </div>
   )
 }
