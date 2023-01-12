@@ -39,7 +39,7 @@
         <a href="https://github.com/DavidOH77">
           <img src="https://img.shields.io/badge/오혜성-606060?style=flat-round&logo=GitHub&logoColor=white"/>
         </a>
-        <a>
+        <a href="https://legendary-malabi-d83ff5.netlify.app/">
           <img src="https://img.shields.io/badge/오혜성-00C7B7?style=flat-round&logo=Netlify&logoColor=white"/>
         </a>
       </td>
