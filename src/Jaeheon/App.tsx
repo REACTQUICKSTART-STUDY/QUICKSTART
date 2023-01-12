@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 import BucketList from "./components/BucketList";
+import {
+  BasicButton,
+  FooterThemeChangeButton,
+  ItalicButton,
+  UnderLineButton,
+  WhiteUnderLineButton,
+} from "./components/Buttons";
+import Calc from "./components/Calc";
+import Footer from "./components/Footer";
+import MyName from "./components/MyName";
 
 type Props = {};
 
@@ -9,10 +19,20 @@ export type Bucket = {
   done: boolean;
 };
 
+export type Operands = {
+  x: number;
+  y: number;
+};
+
 const App = (props: Props) => {
   const [myName, setMyName] = useState<string>("???????");
   const nameLetters: string[] = ["J", "a", "e", "h", "e", "o", "n"];
   const [idxHistory, setIdxHistory] = useState<number[]>([]);
+
+  const [operands, setOperands] = useState<Operands>({ x: 100, y: 300 });
+  const [operator, setOperator] = useState<string>("+");
+
+  const [theme, setTheme] = useState<string>("basic");
 
   const [bucketList, setBucketList] = useState<Bucket[]>([
     { id: 1, task: "스카이다이빙", done: false },
@@ -39,32 +59,40 @@ const App = (props: Props) => {
     });
   };
 
-  const addResult = (x: number, y: number) => {
-    return (
-      <div className="card card-body bg-light mb-3">
-        {x}+{y} = {x + y}
-      </div>
-    );
+  const handleOperand = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, name } = e.target;
+    setOperands({ ...operands, [name]: Number(value) });
+  };
+
+  const handleOperator = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setOperator(e.target.value);
+  };
+
+  const handleTheme = () => {
+    setTheme(theme === "basic" ? "no-basic" : "basic");
   };
 
   return (
     <div className="container">
-      <h2 className="my-3">
-        Hello{" "}
-        {myName.includes("?") ? (
-          <>
-            <span className="border rounded bg-light px-2" onClick={handleName}>
-              {myName}
-            </span>
-            {" <-- Click"}
-          </>
-        ) : (
-          myName + "!!!"
-        )}
-      </h2>
+      <MyName myName={myName} handleName={handleName} />
       <hr />
-      {addResult(1, 3)}
+      <Calc
+        operands={operands}
+        operator={operator}
+        handleOperand={handleOperand}
+        handleOperator={handleOperator}
+      />
       <BucketList bucketList={bucketList} setBucketList={setBucketList} />
+      <div className="d-flex justify-content-center mt-3">
+        <BasicButton>기본</BasicButton>
+        <ItalicButton>이탤릭</ItalicButton>
+        <UnderLineButton>언더라인</UnderLineButton>
+        <WhiteUnderLineButton>화이트 언더라인</WhiteUnderLineButton>
+        <FooterThemeChangeButton onClick={handleTheme}>
+          Footer Theme Change
+        </FooterThemeChangeButton>
+      </div>
+      <Footer theme={theme} />
     </div>
   );
 };
