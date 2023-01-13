@@ -29,7 +29,7 @@
         <a href="https://github.com/HyunSooBae">
           <img src="https://img.shields.io/badge/배현수-006400?style=flat-round&logo=GitHub&logoColor=white"/>
         </a>
-        <a>
+        <a href="https://hyunsoo-react-quickstart.netlify.app/">
           <img src="https://img.shields.io/badge/배현수-00C7B7?style=flat-round&logo=Netlify&logoColor=white"/>
         </a>
       </td>
