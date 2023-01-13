@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-const BasicButton = styled.div`
+const BasicButton = styled.button`
   background-color: purple;
   color: yellow;
   padding: 5px 10px 5px 10px;
