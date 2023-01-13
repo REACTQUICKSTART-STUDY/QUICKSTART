@@ -10,8 +10,3 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
-hr.dash-style {
-  background-color: #fff;
-  border-top: 2px dashed gray;
-}

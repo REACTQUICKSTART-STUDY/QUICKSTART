@@ -1,50 +1,36 @@
-import React, { useState } from "react";
-import CountryList from "./CountryList";
+import { useRef, useState } from "react";
+import React from "react";
 
-export type CountryType = {
-  no: number;
-  country: string;
-  visited: boolean;
-};
+type Props = {};
 
-const App = () => {
-  const [msg, setMsg] = useState<string>("오늘 하루, ");
-  const addResult = (x: string, y: string, z: string) => {
-    return (
-      <div className="card card-body bg-light mb-3">
-        {x} + {y} === {z}
-      </div>
-    );
-  };
+const App3 = (props: Props) => {
+  const [x, setX] = useState<number>(0);
+  const [y, setY] = useState<number>(0);
+  const [result, setResult] = useState<number>(0);
 
-  const [list, setList] = useState<Array<CountryType>>([
-    { no: 1, country: "대한민국", visited: false },
-    { no: 2, country: "멕시코", visited: true },
-    { no: 3, country: "아르헨티나", visited: true },
-    { no: 4, country: "브라질", visited: false },
-  ]);
+  const elemX = useRef<HTMLInputElement>(null);
+  const elemY = useRef<HTMLInputElement>(null);
 
-  const msgStateChange = () => {
-    return setMsg(msg === "오늘 하루, " ? "수고했어, " : "오늘 하루, ");
-  };
-
-  const listDelete = () => {
-    return setList(list.slice(1));
+  const add = () => {
+    let x1: number = parseInt(elemX.current ? elemX.current.value : "", 10);
+    let y1: number = parseInt(elemY.current ? elemY.current.value : "", 10);
+    if (isNaN(x1)) x1 = 0;
+    if (isNaN(y1)) y1 = 0;
+    setX(x1);
+    setY(y1);
+    setResult(x1 + y1);
   };
 
   return (
     <div className="container">
-      <button onClick={msgStateChange}>
-        <h2>{msg}안녕</h2>
-      </button>
-      <hr className="dash-style" />
-      {addResult("UX", "Programming", "David")}
-      <CountryList countries={list} />
-      <button className="delte-btn" onClick={listDelete}>
-        위부터 삭제
-      </button>
+      X : <input id="x" type="text" defaultValue={x} ref={elemX} />
+      <br />
+      Y : <input id="y" type="text" defaultValue={y} ref={elemY} />
+      <br />
+      <button onClick={add}>덧셈 계산</button>
+      결과 : <span>{result}</span>
     </div>
   );
 };
 
-export default App;
+export default App3;
