@@ -10,6 +10,7 @@ export type Bucket = {
   done: boolean;
 };
 
+// 간단한 버킷리스트 App
 const AppContainer = (props: Props) => {
   const [bucketList, setBucketList] = useState<Bucket[]>([
     { id: 1, task: "스카이다이빙", done: false },
