@@ -50,6 +50,17 @@ const AppContainer = (props: Props) => {
     setBucketList(newList);
   };
 
+  const filterBucketList = (filter: string, bucketList: Bucket[]) => {
+    switch (filter) {
+      case "done":
+        return bucketList.filter((item) => item.done);
+      case "not-done":
+        return bucketList.filter((item) => !item.done);
+      default:
+        return bucketList;
+    }
+  };
+
   return (
     <App
       bucketList={bucketList}
@@ -57,6 +68,7 @@ const AppContainer = (props: Props) => {
       deleteBucket={deleteBucket}
       editBucket={editBucket}
       toggleDone={toggleDone}
+      filterBucketList={filterBucketList}
     />
   );
 };

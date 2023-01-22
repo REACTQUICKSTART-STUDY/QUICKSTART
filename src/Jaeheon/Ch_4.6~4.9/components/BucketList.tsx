@@ -4,18 +4,22 @@ import BucketListItem from "./BucketListItem";
 
 type BucketListProps = {
   bucketList: Bucket[];
+  filterStatus: string;
   deleteBucket: (id: number) => void;
   editBucket: (id: number, task: string) => void;
   toggleDone: (id: number) => void;
+  filterBucketList: (filter: string, bucketList: Bucket[]) => Bucket[];
 };
 
 const BucketList = ({
   bucketList,
+  filterStatus,
   deleteBucket,
   editBucket,
   toggleDone,
+  filterBucketList,
 }: BucketListProps) => {
-  const buckets = bucketList.map((item) => {
+  const buckets = filterBucketList(filterStatus, bucketList).map((item) => {
     return (
       <BucketListItem
         key={item.id}
