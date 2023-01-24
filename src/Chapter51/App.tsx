@@ -1,6 +1,8 @@
-import { Component } from "react";
+import React, { Component } from "react";
 // import Clock from './Clock'
 import Chatting from "./Chatting";
+import ErrorBoundary from "./ErrorBoundary";
+import UserList from "./UserList";
 
 // type State = {
 //   formatString: string
@@ -8,7 +10,7 @@ import Chatting from "./Chatting";
 // }
 
 export default class App extends Component<{}, {}> {
-  state = {}
+  // state = {}
   // state = {
   //   // HH : mm : ss
   //   // H시 m분 s초
@@ -29,9 +31,14 @@ export default class App extends Component<{}, {}> {
       //   <hr />
       //   {this.state.clockVisible ? <Clock formatString={this.state.formatString} /> : ""}
       // </div>
-      <div>
-        <Chatting />
-      </div>
-    )
+      <ErrorBoundary>
+        <div>
+          참여 사용자 :
+          <UserList users={["hsbae", "mrlee"]} />
+          <hr />
+          <Chatting />
+        </div>
+      </ErrorBoundary>
+    );
   }
 }
