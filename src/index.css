@@ -1,41 +1,5 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-}
-
-.title {
-  text-align: center;
-  font-weight: bold;
-  font-size: 20pt;
-}
-
-.todo-done {
-  text-decoration: line-through;
-}
-
-.container {
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.panel-borderless {
-  border: 0;
-  box-shadow: none;
-}
-
-.pointer {
-  cursor: pointer;
-  margin: 0 0 0 10px;
-}
-
-.List-group-item {
+.boxStyle {
+  border: solid 1px gray;
   padding: 5px;
-  box-sizing: border-box;
-  list-style: none;
-}
-
-.input-box {
-  padding: 10px;
-  box-sizing: border-box;
+  margin: 5px;
 }
