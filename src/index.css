@@ -1,75 +1,95 @@
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
+@import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
 body {
   margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.menu {
+  width: 25%;
+  border-radius: 0 !important;
+}
+
+.close {
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 !important;
+}
+
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.box {
+  background-color: white;
+  margin: 50px auto;
+  max-width: 950px;
   min-width: 320px;
-  min-height: 100vh;
+  min-height: 240px;
+  font: 12px "verdana";
+  padding: 5px 5px 5px 5px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.box div {
+  padding: 0;
+  display: block;
+  margin: 5px 0 0 0;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.box .heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #33a17f;
+  font-weight: 300;
+  text-align: left;
+  color: #fff;
+  margin: 0px;
+  padding: 10px 10px 10px 10px;
+}
+
+.box .player {
+  background: white;
+}
+
+.box .player .video {
+  position: relative;
+  padding-top: 56.25%;
+}
+
+.box .player .video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pointer {
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
+.play-button {
+  width: 15px;
+  height: 15px;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-
-  a:hover {
-    color: #747bff;
-  }
-
-  button {
-    background-color: #f9f9f9;
-  }
+.play-button-disabled {
+  opacity: 0.3;
 }
