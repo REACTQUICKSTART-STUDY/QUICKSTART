@@ -8,10 +8,10 @@ import {
 } from "react-router-dom";
 import Header from "./components/Header";
 import Loading from "./components/Loading";
-// import NotFound from "./components/NotFound";
-// import About from "./pages/About";
+import NotFound from "./components/NotFound";
+import About from "./pages/About";
 // import Home from "./pages/Home";
-// import Members from "./pages/Members";
+import Members from "./pages/Members";
 import Player from "./pages/songs/Player";
 // import SongList from "./pages/SongList";
 import SongIndex from "./pages/songs/Index";
@@ -29,8 +29,8 @@ export type SongType = {
 };
 
 const Home = React.lazy(() => pMinDelay(import("./pages/Home"), 1000));
-const About = React.lazy(() => pMinDelay(import("./pages/About"), 1000));
-const Members = React.lazy(() => pMinDelay(import("./pages/Members"), 1000));
+// const About = React.lazy(() => pMinDelay(import("./pages/About"), 1000));
+// const Members = React.lazy(() => pMinDelay(import("./pages/Members"), 1000));
 const SongList = React.lazy(() => pMinDelay(import("./pages/SongList"), 1000));
 // const SongIndex = React.lazy(() =>
 //   pMinDelay(import("./pages/songs/Index"), 1000)
@@ -38,9 +38,9 @@ const SongList = React.lazy(() => pMinDelay(import("./pages/SongList"), 1000));
 // const Player = React.lazy(() =>
 //   pMinDelay(import("./pages/songs/Player"), 1000)
 // );
-const NotFound = React.lazy(() =>
-  pMinDelay(import("./components/NotFound"), 1000)
-);
+// const NotFound = React.lazy(() =>
+//   pMinDelay(import("./components/NotFound"), 1000)
+// );
 
 const App1 = () => {
   const [members, setMembers] = useState<MemberType[]>([

@@ -277,6 +277,8 @@ const SongList = () => {
 
     이러한 404 에러를 라우트 수준에서 처리하는 것을 404 라우트라고 한다. 404 라우트는 `<Routes />` 내부의 가장 마지막에 `<Route path="*" element={<NotFound />}/>`와 같이 만든다. 404 라우트는 경로가 \*이므로 아무 경로도 매칭되지 않았다면 404 라우트에 지정된 컴포넌트가 렌더링 된다.
 
+    추가로 BrowserRouter로 netlify 배포 시 public/\_redirects 파일을 만든 후 `/* /index.html 200`을 추가하면 직접 경로를 입력해도 에러가 발생하지 않는다.
+
     ```tsx
     <Route path="/a" element={<Navigate to="/b" />} />
     <Route path="/b" element={<BComponent />} />
