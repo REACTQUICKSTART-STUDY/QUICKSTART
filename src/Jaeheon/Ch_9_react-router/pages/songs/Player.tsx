@@ -1,18 +1,26 @@
+import pMinDelay from "p-min-delay";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router";
 import { Link } from "react-router-dom";
 import YouTube from "react-youtube";
-import { SongType } from "../App1";
+import { SongType } from "../../App1";
+import Loading from "../../components/Loading";
+import LoadingVideo from "../../components/LoadingVideo";
+// import YoutubePlayer from "../../components/YoutubePlayer";
 
 type PlayerPropsType = {};
 
 type SongIdParam = {
-  id: string;
+  id?: string;
 };
 
 type ContextType = {
   songs: SongType[];
 };
+
+const YoutubePlayer = React.lazy(() =>
+  pMinDelay(import("../../components/YoutubePlayer"), 1000)
+);
 
 const Player = ({}: PlayerPropsType) => {
   const { id } = useParams<SongIdParam>();
@@ -34,7 +42,7 @@ const Player = ({}: PlayerPropsType) => {
 
   return (
     <div className="modal">
-      <div className="box">
+      <div className="box position-relative">
         <div className="heading">
           <span className="title h6 mb-0">&nbsp;&nbsp;&nbsp;{title}</span>
           <Link className="close" to={"/songs"}>
@@ -45,13 +53,16 @@ const Player = ({}: PlayerPropsType) => {
           </Link>
         </div>
         <div className="player">
-          <YouTube
+          <React.Suspense fallback={<LoadingVideo />}>
+            {/* <YouTube
             className="video"
             videoId={youtubeLink}
             opts={{
               playerVars: { autoplay: 1 },
             }}
-          />
+          /> */}
+            <YoutubePlayer youtubeLink={youtubeLink} />
+          </React.Suspense>
         </div>
       </div>
     </div>

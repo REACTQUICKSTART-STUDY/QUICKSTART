@@ -1,27 +1,26 @@
+import pMinDelay from "p-min-delay";
 import React from "react";
 import { useNavigate } from "react-router";
 import { MemberType } from "../App1";
+import LoadingImage from "../components/LoadingImage";
+// import MemberImage from "../components/MemberImage";
 
 type MemberPropsType = {
   members: MemberType[];
 };
 
+const MemberImage = React.lazy(() =>
+  pMinDelay(import("../components/MemberImage"), 1000)
+);
+
 const Members = ({ members }: MemberPropsType) => {
   const navigate = useNavigate();
 
-  const imgStyle = { width: 150, height: 200 };
   const list = members.map((member) => (
     <div key={member.name} className="col-6 col-md-4 col-lg-3">
-      <img
-        src={member.photo}
-        alt={member.name}
-        className="img-thumbnail"
-        style={imgStyle}
-      />
-      <br />
-      <h6>{member.name}</h6>
-      <br />
-      <br />
+      <React.Suspense fallback={<LoadingImage />}>
+        <MemberImage member={member} />
+      </React.Suspense>
     </div>
   ));
 

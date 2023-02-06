@@ -1,9 +1,17 @@
+import pMinDelay from "p-min-delay";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import LoadingImage from "../components/LoadingImage";
+import LoadingVideo from "../components/LoadingVideo";
+// import MinjiImage from "../components/MinjiImage";
 
 type AboutPropsType = {
   title: string;
 };
+
+const MinjiImage = React.lazy(() =>
+  pMinDelay(import("../components/MinjiImage"), 1000)
+);
 
 const About = ({ title }: AboutPropsType) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -25,6 +33,7 @@ const About = ({ title }: AboutPropsType) => {
     const strPage = searchParams.get("page");
     if (Number(strPage) < 1 || Number(strPage) > maxPage) {
       navigate("/about");
+      setPage(1);
     } else {
       setPage(Number(strPage) || 1);
     }
@@ -33,14 +42,9 @@ const About = ({ title }: AboutPropsType) => {
   return (
     <div className="card card-body">
       <h2>About {title} 민지 </h2>
-      <div>
-        <img
-          src={`photos/minji${page}.jpg`}
-          alt="뉴진스"
-          className="img-thumbnail"
-          style={{ width: "700px" }}
-        />
-      </div>
+      <React.Suspense fallback={<LoadingImage />}>
+        <MinjiImage page={page} />
+      </React.Suspense>
       <div>
         <div className="m-2">
           현재 페이지 : {page} / {maxPage}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 type HeaderPropsType = {};
 
@@ -9,9 +9,8 @@ type LinkItem = {
 };
 
 const Header = ({}: HeaderPropsType) => {
-  const { pathname } = useLocation();
   const links: LinkItem[] = [
-    { name: "Home", to: "/" },
+    { name: "Home", to: "/home" },
     { name: "About", to: "/about" },
     { name: "Members", to: "/members" },
     { name: "Songs", to: "/songs" },
@@ -29,13 +28,17 @@ const Header = ({}: HeaderPropsType) => {
         <div className="row">
           <div className="col-12">
             {links.map((link) => {
-              const cn =
-                "btn btn-primary menu" +
-                ("/" + pathname.split("/")[1] === link.to ? " active" : "");
+              const cn = "btn btn-primary menu";
               return (
-                <Link className={cn} key={link.name} to={link.to}>
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? cn + " active" : cn;
+                  }}
+                  key={link.name}
+                  to={link.to}
+                >
                   {link.name}
-                </Link>
+                </NavLink>
               );
             })}
           </div>
