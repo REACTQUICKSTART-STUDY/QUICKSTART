@@ -1,5 +1,5 @@
 import React from 'react'
-import { TodoListItemType } from '../Appcontainer'
+import { TodoListItemType } from '../AppContainer'
 
 type TodoListItemProps = {
   todoItem: TodoListItemType
