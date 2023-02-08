@@ -43,7 +43,7 @@ const App = () => {
           <Route path="/about" element={<About title={"여우와 늙다리들"} />} />
           <Route path="/members" element={<Members members={members} />} />
           <Route path="/songs" element={<SongList songs={songs} />}>
-            <Route path=":id" element={<Player songs={songs} />} />
+            <Route path=":id" element={<Player />} />
           </Route>
         </Routes>
       </div>
