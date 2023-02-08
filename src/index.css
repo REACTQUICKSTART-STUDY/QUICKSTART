@@ -1,6 +1,7 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css";
 
-body {
+/* 9장 css */
+/* body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -92,4 +93,31 @@ body {
 
 .play-button-disabled {
   opacity: 0.3;
+} */
+/* 9장 css */
+
+/* 10장 css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
 }
+.title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 20pt;
+}
+.todo-done {
+  text-decoration: line-through;
+}
+.container {
+  padding: 10px 10px 10px 10px;
+}
+.panel-borderless {
+  border: 0;
+  box-shadow: none;
+}
+.pointer {
+  cursor: pointer;
+}
+/* 10장 css */
