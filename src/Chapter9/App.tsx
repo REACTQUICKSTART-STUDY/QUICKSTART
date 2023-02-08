@@ -15,12 +15,12 @@ import Loading from "./components/Loading";
 // import NotFound from "./components/NotFound";
 
 const Home = React.lazy(() => pMinDelay(import(/* webpackChunkName */ './pages/Home'), 1000));
-const About = React.lazy(() => pMinDelay(import('./pages/About'), 1000));
-const SongList = React.lazy(() => pMinDelay(import('./pages/SongList'), 1000));
-const Members = React.lazy(() => pMinDelay(import('./pages/Members'), 1000));
-const Player = React.lazy(() => pMinDelay(import('./pages/songs/Player'), 1000));
-const SongIndex = React.lazy(() => pMinDelay(import('./pages/songs/Index'), 1000));
-const NotFound = React.lazy(() => pMinDelay(import('./components/NotFound'), 1000));
+const About = React.lazy(() => pMinDelay(import('./pages/About'), 2000));
+const SongList = React.lazy(() => pMinDelay(import('./pages/SongList'), 2000));
+const Members = React.lazy(() => pMinDelay(import('./pages/Members'), 2000));
+const Player = React.lazy(() => pMinDelay(import('./pages/songs/Player'), 2000));
+const SongIndex = React.lazy(() => pMinDelay(import('./pages/songs/Index'), 2000));
+const NotFound = React.lazy(() => pMinDelay(import('./components/NotFound'), 2000));
 
 export type SongType = { id: number; title: string; musician: string; youtube_link: string };
 
