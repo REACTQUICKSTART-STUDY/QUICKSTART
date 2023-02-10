@@ -7,7 +7,7 @@ type PropsType = {
   callbacks: CallbacksType;
 }
 
-const TodoList = ({ states, callbacks }) => {
+const TodoList = ({ states, callbacks }: PropsType) => {
   let todoItems = states.todoList.map((item) => {
     return <TodoItem key={item.id} todoItem={item} callbacks={callbacks} />
   })
