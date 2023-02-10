@@ -1,1 +1,0 @@
-import{u as o,a,j as n}from"./vendor-389e6b6b.js";const e=()=>{const s=o();return a("div",{className:"m-3",children:[n("h3",{children:"존재하지 않는 경로"}),a("p",{children:["요청 경로: ",s.pathname]})]})};export{e as default};

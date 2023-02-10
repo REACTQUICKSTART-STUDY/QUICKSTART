@@ -9,13 +9,14 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 // import { TodoProvider } from "./Chapter8/TodoContext";
 // import App from "./Chapter8/App";
-import App from './Chapter9/App'
+// import App from './Chapter9/App'
+import AppContainer from './Chapter10/AppContainer'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
   // <TodoProvider>
-    <App />
+    <AppContainer />
   // </TodoProvider>
   // </React.StrictMode>,
 );
