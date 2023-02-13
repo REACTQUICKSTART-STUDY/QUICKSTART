@@ -5,4 +5,13 @@ import { manualChunksPlugin } from "vite-plugin-webpackchunkname";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), manualChunksPlugin()],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://todosvc.vercel.app",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ""),
+      },
+    },
+  },
 });

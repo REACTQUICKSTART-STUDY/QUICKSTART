@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
-import AppContainer from "./Jaeheon/Ch_10_react-router-todolist/AppContainer";
-// import AppContainer2 from "./Jaeheon/Ch_4.6~4.9//AppContainer";
 import "./index.css";
+import AppContainer from "./Jaeheon/Ch_11_http_communication/AppContainer";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <>
-    <AppContainer />
-    {/* <AppContainer2 /> */}
-  </>
+  <AppContainer />
 );
