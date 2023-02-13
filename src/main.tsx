@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import 'bootstrap/dist/css/bootstrap.css'
-import App from './App'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "bootstrap/dist/css/bootstrap.css";
+import "./index.css";
+import AppContainer from "./Jaeheon/Ch_11_http_communication/AppContainer";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <App />
-)
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <AppContainer />
+);
