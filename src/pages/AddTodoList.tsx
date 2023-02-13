@@ -4,7 +4,7 @@ import { CallbacksType } from "../AppContainer";
 
 type PropsType = { callbacks: CallbacksType };
 
-const AddTodo = ({ callbacks }: PropsType) => {
+const AddTodoList = ({ callbacks }: PropsType) => {
   const navigate = useNavigate();
 
   let [todo, setTodo] = useState<string>("");
@@ -50,10 +50,18 @@ const AddTodo = ({ callbacks }: PropsType) => {
             ></textarea>
           </div>
           <div className="form-group">
-            <button type="button" className="btn btn-primary m-1" onClick={addTodoHandler}>
+            <button
+              type="button"
+              className="btn btn-primary m-1"
+              onClick={addTodoHandler}
+            >
               추 가
             </button>
-            <button type="button" className="btn btn-primary m-1" onClick={() => navigate("/todos")}>
+            <button
+              type="button"
+              className="btn btn-primary m-1"
+              onClick={() => navigate("/todos")}
+            >
               취 소
             </button>
           </div>
@@ -63,4 +71,4 @@ const AddTodo = ({ callbacks }: PropsType) => {
   );
 };
 
-export default AddTodo;
+export default AddTodoList;

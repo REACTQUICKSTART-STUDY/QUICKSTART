@@ -4,7 +4,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import TodoList from "./pages/TodoList";
-import AddTodo from "./pages/Addtodo";
+import AddTodoList from "./pages/AddTodoList";
 import EditTodo from "./pages/EditTodo";
 import NotFound from "./pages/NotFound";
 import { CallbacksType, StatesType } from "./AppContainer";
@@ -26,7 +26,10 @@ const App = ({ states, callbacks }: PropsType) => {
             path="todos"
             element={<TodoList states={states} callbacks={callbacks} />}
           />
-          <Route path="todos/add" element={<AddTodo callbacks={callbacks} />} />
+          <Route
+            path="todos/add"
+            element={<AddTodoList callbacks={callbacks} />}
+          />
           <Route
             path="todos/edit/:id"
             element={<EditTodo states={states} callbacks={callbacks} />}
