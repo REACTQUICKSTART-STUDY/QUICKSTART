@@ -1,51 +1,35 @@
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
+  let [isNavShow, setIsNavShow] = useState<boolean>(false);
   return (
-    <div className="card bg-light">
-      <div className="card-heading">
-        <h2 className="text-center m-3">Foxes And Fossils</h2>
-        <p>
-          <a href="http://foxesandfossils.com">http://foxesandfossils.com</a>
-        </p>
-        <div className="row">
-          <div className="col-12">
-            <NavLink
-              to="/home"
-              className={({ isActive }) => {
-                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
-              }}
-            >
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      <span className="navbar-brand ps-2">TodoList App</span>
+      <button className="navbar-toggler" type="button" onClick={() => setIsNavShow(!isNavShow)}>
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className={isNavShow ? "collapse navbar-collapse show" : "collapse navbar-collapse"}>
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link className="nav-link" to="/">
               Home
-            </NavLink>
-            <NavLink
-              to="/about"
-              className={({ isActive }) => {
-                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
-              }}
-            >
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/about">
               About
-            </NavLink>
-            <NavLink
-              to="/members"
-              className={({ isActive }) => {
-                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
-              }}
-            >
-              Members
-            </NavLink>
-            <NavLink
-              to="/songs"
-              className={({ isActive }) => {
-                return isActive ? "btn menu btn-dark" : "btn menu btn-success";
-              }}
-            >
-              Songs
-            </NavLink>
-          </div>
-        </div>
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/todos">
+              TodoList
+            </Link>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
   );
 };
+
 export default Header;
