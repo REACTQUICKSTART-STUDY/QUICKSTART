@@ -11,14 +11,19 @@ import "bootstrap/dist/css/bootstrap.css";
 // import App from "./Chapter8/App";
 // import App from './Chapter9/App'
 // import AppContainer from './Chapter10/AppContainer'
-import App from './Chapter11/App'
+import App from './Chapter10/App'
+// import App from './Chapter11/App'
+import AppStore from "./Chapter10/redux/AppStore";
+import { Provider } from "react-redux";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   // <React.StrictMode>
   // <TodoProvider>
     // <AppContainer />
-    <App />
+    <Provider store={AppStore}>
+      <App />
+    </Provider>
   // </TodoProvider>
   // </React.StrictMode>,
 );
