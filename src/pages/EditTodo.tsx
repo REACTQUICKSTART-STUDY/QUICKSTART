@@ -1,14 +1,23 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { CallbacksType, StatesType, TodoItemType } from "../AppContainer";
+import TodoActionCreator from "../redux/TodoActionCreator";
+import { connect } from "react-redux";
+import { AnyAction, Dispatch } from "redux";
+import { TodoItemType, TodoStatesType } from "../redux/TodoReducer";
 
-type PropsType = { callbacks: CallbacksType; states: StatesType };
-type TodoParam = { id?: string };
+type PropsType = {
+  updateTodo: (id: number, todo: string, desc: string, done: boolean) => void;
+  todoList: Array<TodoItemType>;
+};
 
-const EditTodo = ({ callbacks, states }: PropsType) => {
+type TodoParam = {
+  id?: string;
+};
+
+const EditTodo = ({ todoList, updateTodo }: PropsType) => {
   const navigate = useNavigate();
   let { id } = useParams<TodoParam>();
-  let todoItem = states.todoList.find((item) => item.id === parseInt(id ? id : "0"));
+  let todoItem = todoList.find((item) => item.id === parseInt(id ? id : "0"));
   if (!todoItem) {
     navigate("/todos");
     return <></>;
@@ -21,9 +30,8 @@ const EditTodo = ({ callbacks, states }: PropsType) => {
       return;
     }
     let { id, todo, desc, done } = todoOne;
-    callbacks.updateTodo(id, todo, desc, done, () => {
-      navigate("/todos");
-    });
+    updateTodo(id, todo, desc, done);
+    navigate("/todos");
   };
 
   return (
@@ -60,14 +68,24 @@ const EditTodo = ({ callbacks, states }: PropsType) => {
             <input
               type="checkbox"
               checked={todoOne.done}
-              onChange={(e) => setTodoOne({ ...todoOne, done: e.target.checked })}
+              onChange={(e) =>
+                setTodoOne({ ...todoOne, done: e.target.checked })
+              }
             />
           </div>
           <div className="form-group">
-            <button type="button" className="btn btn-primary m-1" onClick={updateTodoHandler}>
+            <button
+              type="button"
+              className="btn btn-primary m-1"
+              onClick={updateTodoHandler}
+            >
               수 정
             </button>
-            <button type="button" className="btn btn-primary m-1" onClick={() => navigate("/todos")}>
+            <button
+              type="button"
+              className="btn btn-primary m-1"
+              onClick={() => navigate("/todos")}
+            >
               취 소
             </button>
           </div>
@@ -77,4 +95,18 @@ const EditTodo = ({ callbacks, states }: PropsType) => {
   );
 };
 
-export default EditTodo;
+const mapStateToProps = (state: TodoStatesType) => ({
+  todoList: state.todoList,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch<AnyAction>) => ({
+  updateTodo: (id: number, todo: string, desc: string, done: boolean) =>
+    dispatch(TodoActionCreator.updateTodo({ id, todo, desc, done })),
+});
+
+const EditTodoContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(EditTodo);
+
+export default EditTodoContainer;
