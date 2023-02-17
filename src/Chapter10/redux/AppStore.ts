@@ -25,9 +25,9 @@ const RootReducer = combineReducers({ home: TimeReducer, todos: TodoReducer });
 
 const loggerMW: Middleware = (store) => (next) => (action) => {
   console.log('### action 실행 : ', action)
-  console.log('### action 변경 전 상태 : ', store.getState())
+  // console.log('### action 변경 전 상태 : ', store.getState())
   next(action)
-  console.log('### action 변경 후 상태 : ', store.getState())
+  // console.log('### action 변경 후 상태 : ', store.getState())
 }
 
 const AppStore = configureStore({ 
